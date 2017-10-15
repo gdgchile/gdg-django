@@ -46,8 +46,13 @@ DATABASES = {
 ```
 
 
+y por último, no olvides ignorar los archivos
+```
+$ echo "**/__pycache__" >> .gitignore
+```
 
-ir al siguiente paso
+# Siguiente paso
+Ir al siguiente paso
 ```
 git checkout step-4
 ```
