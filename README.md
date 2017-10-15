@@ -1,28 +1,27 @@
-# gdg-django
-
-Instlar django, pero primero configurar el ambiente de desarrollo, Ir a la terminal
-
+# GDG-DJANGO
+Antes de comenzar
 ```
-$ python -m venv .venv
-$ source .venv/bin/activate
+git reset --hard
 ```
 
-si eres usuario windows 
-```
-path\to\your\.venv\Scripts\activate
-```
+# GET STARTED WITH DJANGO
 
-Y ahora instalar django
+Para crear un projecto en django, ejecuta
 
 ```
-pip install django
-pip freeze > requeriments.txt
+$ django-admin startproject mysite
 ```
 
-El primero `pip install` instala dependencias dentro de tu ambiente y el segundo `pip freeze` lista las dependencias y `> requetiments` crea un archivo con esas dependencias.
-
-Luego hay que crear un archivo llamado .gitignore e ignorar el ambiente virtual
+donde mysite es el nombre de tu proyecto, anda inventa uno ;). Cuando tengas la estructura basica
+de tu projecto en django, ejecuta el servidor
 
 ```
-echo ".venv" >> .gitignore
+$ python mysite/manage.py server
+```
+
+y ahora anda al navegador y visita el sitio [localhost:8000](localhost:8000)
+
+ir al siguiente paso
+```
+git checkout step-4
 ```
