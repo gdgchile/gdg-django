@@ -1,5 +1,10 @@
 # gdg-django
 
+Antes de comenzar
+```
+git reset --hard
+```
+
 Instlar django, pero primero configurar el ambiente de desarrollo, Ir a la terminal
 
 ```
@@ -25,4 +30,10 @@ Luego hay que crear un archivo llamado .gitignore e ignorar el ambiente virtual
 
 ```
 echo ".venv" >> .gitignore
+```
+
+# siguiente paso
+Para ir al siguiente paso, en donde se creará el projecto en django
+```
+git checkout step-3
 ```
