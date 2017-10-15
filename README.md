@@ -4,59 +4,60 @@ Antes de comenzar
 git reset --hard
 ```
 
-# Tu primera app django
+## La primera migración
 
-Para crear una app en django, se debe ejecutar el siguiente commando
+Ejecuta lo siguiente, para crear las tablas de la configuración de django
 ```
-$ cd mysite
-$ python manage.py startapp polls
+$ python manage.py migrate
 ```
-Este creará una app llamada polls
+El comando migrate, revisa dentro de `INSTALLED_APPS` del archivo `mysite/mysite/settins.py` y creas las tablas necesarias de acuerdo a la configuración.
 
-## La primera vista
-Abre el archivo polls/view.py
+
+### Crear modelos
+
+abrir el archivo `polls/models` y escribir lo siguiente
 
 ```
-from django.http import HttpResponse
+from django.db import models
 
 
-def index(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
+class Question(models.Model):
+    question_text = models.CharField(max_length=200)
+    pub_date = models.DateTimeField('date published')
+
+
+class Choice(models.Model):
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    choice_text = models.CharField(max_length=200)
+    votes = models.IntegerField(default=0)
 ```
 
-ahora crea el archivo urls.py en la carpeta polls y añade el siguiente codigo
+#### Activar los modelos
+
+luego hay que activar estos modelos en el archivo `mysite/settings.py`
+
 ```
-from django.conf.urls import url
-
-from . import views
-
-urlpatterns = [
-    url(r'^$', views.index, name='index'),
+INSTALLED_APPS = [
+    'polls.apps.PollsConfig',
+    ...
 ]
 ```
 
-
-El siguiente paso es decirle mysite que redireccione las urls, en el archivo `mysite/urls.py`
+#### ejecutar la migración
 
 ```
-from django.conf.urls import include, url
-from django.contrib import admin
-
-urlpatterns = [
-    url(r'^polls/', include('polls.urls')),
-    url(r'^admin/', admin.site.urls),
-]
+python manage.py makemigrations polls
 ```
 
+Este comando creará en la carpeta migration el archivo `0001_initial.py`, este archivo contiene el codigo necesario para crear las tablas en la base de datos. Ahora lo unico que falta hacer es crear las tablas en la BD, ejecutando:
 
-## Ejecuta el servidor
 ```
-python manage.py runserver
+python manage.py migrate polls 0001
 ```
 
 
 # Siguiente paso
 Ir al siguiente paso
 ```
-git checkout step-5
+git checkout final
 ```
