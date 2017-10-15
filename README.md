@@ -21,6 +21,7 @@ Y ahora instalar django
 
 ```
 pip install django
+pip install psycopg2
 pip freeze > requeriments.txt
 ```
 
