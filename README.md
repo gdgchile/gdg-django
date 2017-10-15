@@ -23,7 +23,12 @@ y ahora anda al navegador y visita el sitio [localhost:8000](localhost:8000)
 
 # Configurar la BD
 
-Ahora hay que decirle a nuestro projecto django que use postgresql db, solo debes cambiar el archivo `settings.py`
+Primero, # Configurar la BD
+
+Dirigete a tu administrador de BD y crea la base de datos con el nombre de `gdgdjango` o el que estimes conveniente
+
+
+Luego, hay que decirle a nuestro projecto django que use postgresql db, solo debes cambiar el archivo `settings.py`
 
 Modifica la siguiente linea 
 ```
@@ -46,10 +51,12 @@ DATABASES = {
 ```
 
 
-y por último, no olvides ignorar los archivos
+No olvides ignorar los archivos
 ```
 $ echo "**/__pycache__" >> .gitignore
 ```
+
+
 
 # Siguiente paso
 Ir al siguiente paso
