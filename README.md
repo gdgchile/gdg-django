@@ -16,7 +16,7 @@ donde mysite es el nombre de tu proyecto, anda inventa uno ;). Cuando tengas la 
 de tu projecto en django, ejecuta el servidor
 
 ```
-$ python mysite/manage.py server
+$ python mysite/manage.py runserver
 ```
 
 y ahora anda al navegador y visita el sitio [localhost:8000](localhost:8000)
