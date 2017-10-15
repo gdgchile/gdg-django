@@ -50,6 +50,7 @@ DATABASES = {
 
 ```
 
+y si necesitas el configurar el username, password y host, añade estas `'USER', 'PASSWORD', 'HOST', 'PORT'`.
 
 No olvides ignorar los archivos
 ```
