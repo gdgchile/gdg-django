@@ -4,55 +4,59 @@ Antes de comenzar
 git reset --hard
 ```
 
-# GET STARTED WITH DJANGO
+# Tu primera app django
 
-Para crear un projecto en django, ejecuta
+Para crear una app en django, se debe ejecutar el siguiente commando
+```
+$ cd mysite
+$ python manage.py startapp polls
+```
+Este creará una app llamada polls
+
+## La primera vista
+Abre el archivo polls/view.py
 
 ```
-$ django-admin startproject mysite
+from django.http import HttpResponse
+
+
+def index(request):
+    return HttpResponse("Hello, world. You're at the polls index.")
 ```
 
-donde mysite es el nombre de tu proyecto, anda inventa uno ;). Cuando tengas la estructura basica
-de tu projecto en django, ejecuta el servidor
-
+ahora crea el archivo urls.py en la carpeta polls y añade el siguiente codigo
 ```
-$ python mysite/manage.py runserver
-```
+from django.conf.urls import url
 
-y ahora anda al navegador y visita el sitio [localhost:8000](localhost:8000)
+from . import views
 
-# Configurar la BD
-
-Ahora hay que decirle a nuestro projecto django que use postgresql db, solo debes cambiar el archivo `settings.py`
-
-Modifica la siguiente linea 
-```
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-```
-por
-```
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'gdgdjango',
-    }
-}
-
+urlpatterns = [
+    url(r'^$', views.index, name='index'),
+]
 ```
 
 
-y por último, no olvides ignorar los archivos
+El siguiente paso es decirle mysite que redireccione las urls, en el archivo `mysite/urls.py`
+
 ```
-$ echo "**/__pycache__" >> .gitignore
+from django.conf.urls import include, url
+from django.contrib import admin
+
+urlpatterns = [
+    url(r'^polls/', include('polls.urls')),
+    url(r'^admin/', admin.site.urls),
+]
 ```
+
+
+## Ejecuta el servidor
+```
+python manage.py runserver
+```
+
 
 # Siguiente paso
 Ir al siguiente paso
 ```
-git checkout step-4
+git checkout step-5
 ```
