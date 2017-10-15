@@ -21,6 +21,32 @@ $ python mysite/manage.py runserver
 
 y ahora anda al navegador y visita el sitio [localhost:8000](localhost:8000)
 
+# Configurar la BD
+
+Ahora hay que decirle a nuestro projecto django que use postgresql db, solo debes cambiar el archivo `settings.py`
+
+Modifica la siguiente linea 
+```
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+```
+por
+```
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'gdgdjango',
+    }
+}
+
+```
+
+
+
 ir al siguiente paso
 ```
 git checkout step-4
